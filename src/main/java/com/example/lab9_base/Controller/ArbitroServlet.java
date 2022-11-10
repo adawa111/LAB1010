@@ -22,6 +22,8 @@ public class ArbitroServlet extends HttpServlet {
         ArrayList<String> opciones = new ArrayList<>();
         opciones.add("nombre");
         opciones.add("pais");
+        DaoArbitros arbitrosDao = new DaoArbitros();
+        Arbitro arbitro = null;
 
         switch (action) {
 
@@ -35,6 +37,11 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
+                arbitro = new Arbitro();
+                String codigo = request.getParameter("codigo");
+                String nombre = request.getParameter("nombre");
+
+                arbitrosDao.crearArbitro(arbitro);
                 break;
 
         }
@@ -73,8 +80,7 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
-                Arbitro arbitro = null;
-                arbitrosDao.crearArbitro(arbitro);
+
                 view = request.getRequestDispatcher("/arbitros/form.jsp");
                 view.forward(request, response);
                 break;

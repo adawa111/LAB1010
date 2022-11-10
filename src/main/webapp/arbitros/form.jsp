@@ -20,6 +20,12 @@
                             <label>País</label>
                             <select name="pais" class="form-control">
                                 <%--  COLOCAR LISTA DE PAÍSES BRINDADA EN EL SERVLET--%>
+                                <option selected></option>
+                                <option value="1">Alumno</option>
+                                <option value="2">Administrativo</option>
+                                <option value="3">Jefe de Práctica</option>
+                                <option value="4">Profesor</option>
+                                <option value="5">Egresado</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>

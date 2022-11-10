@@ -1,10 +1,15 @@
 package com.example.lab9_base.Controller;
 
+import com.example.lab9_base.Bean.Arbitro;
+import com.example.lab9_base.Dao.DaoArbitros;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ArbitroServlet", urlPatterns = {"/ArbitroServlet"})
@@ -50,12 +55,17 @@ public class ArbitroServlet extends HttpServlet {
         ArrayList<String> opciones = new ArrayList<>();
         opciones.add("nombre");
         opciones.add("pais");
+        DaoArbitros arbitrosDao = new DaoArbitros();
 
         switch (action) {
             case "lista":
                 /*
                 Inserte su código aquí
                  */
+                ArrayList<Arbitro> listaArbitros = null;
+                listaArbitros = arbitrosDao.listarArbitros();
+
+                request.setAttribute("listaArbitros",listaArbitros);
                 view = request.getRequestDispatcher("/arbitros/list.jsp");
                 view.forward(request, response);
                 break;
@@ -63,8 +73,12 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
-
+                Arbitro arbitro = null;
+                arbitrosDao.crearArbitro(arbitro);
+                view = request.getRequestDispatcher("/arbitros/form.jsp");
+                view.forward(request, response);
                 break;
+
             case "borrar":
                 /*
                 Inserte su código aquí

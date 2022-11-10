@@ -1,4 +1,9 @@
+<%@ page import="com.example.lab9_base.Bean.Arbitro" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    ArrayList<Arbitro> listaArbitros = (ArrayList<Arbitro>) request.getAttribute("listaArbitros");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,6 +24,7 @@
                     <div class="col-lg-3">
                         <select name="tipo" class="form-control">
                             <%--                    ACA DEBE COLOCAR LA LISTA DE OPCIONES MOSTRADAS EN EL SERVLET--%>
+
                         </select>
                     </div>
                     <div class="col-lg-5">
@@ -40,16 +46,19 @@
                     <th>Pais</th>
                     <th></th>
                 </tr>
+
+                <% for(Arbitro arbitro : listaArbitros) {%>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= arbitro.getIdArbitro()%> </td>
+                    <td><%= arbitro.getNombre()%></td>
+                    <td><%= arbitro.getPais()%></td>
                     <td>
                         <a href="<%=request.getContextPath()%>/ArbitroServlet?action=borrar&id=">
                             Borrar
                         </a>
                     </td>
                 </tr>
+                <% }%>
             </table>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

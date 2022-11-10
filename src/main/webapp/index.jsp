@@ -40,6 +40,12 @@
                     <a href="<%= request.getContextPath()%>/PartidoServlet?action=crear" class="btn btn-primary">Crear Partido</a>
                 </div>
             </div>
+            <% if(session.getAttribute("infosi")!= null) {%>
+            <div class="alert alert-success" role="alert">
+                <%=session.getAttribute("infosi")%>
+            </div>
+            <%session.removeAttribute("infosi");%>
+            <%}%>
             <table class="table">
                 <tr>
                     <th>#</th>
@@ -54,8 +60,8 @@
                 <% Estadio estadio = match.getSeleccionLocal().getEstadio();%>
                 <% Arbitro ar = match.getArbitro();%>
                 <tr>
-                    <td><%= match.getNumeroJornada()%></td>
                     <td><%= match.getIdPartido()%></td>
+                    <td><%= match.getNumeroJornada()%></td>
                     <td><%= match.getFecha()%></td>
                     <td><%= match.getSeleccionLocal().getNombre()%></td>
                     <td><%= match.getSeleccionVisitante().getNombre()%></td>

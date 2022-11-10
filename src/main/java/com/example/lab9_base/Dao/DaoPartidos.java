@@ -7,8 +7,23 @@ import com.example.lab9_base.Bean.Seleccion;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DaoPartidos extends DaoBase{
+
+
+    public int partidosIguales(Partido encuentro){
+        int iguales = 0;
+        ArrayList<Partido> partidos = listaDePartidos();
+        for (Partido par : partidos){
+            if ((par.getArbitro().getIdArbitro() == encuentro.getArbitro().getIdArbitro()) & Objects.equals(par.getFecha(), encuentro.getFecha()) & (par.getNumeroJornada() == encuentro.getNumeroJornada()) & (par.getSeleccionLocal().getIdSeleccion() == encuentro.getSeleccionLocal().getIdSeleccion()) & (par.getSeleccionVisitante().getIdSeleccion()==encuentro.getSeleccionVisitante().getIdSeleccion())){
+                iguales=1;
+                System.out.println(iguales);
+                break;
+            }
+        }
+        return iguales;
+    }
     public Arbitro obtenerArbitro(int id){
         Arbitro refere = new Arbitro();
         String sql1 = "Select * from arbitro where idArbitro ="+id;
@@ -81,7 +96,6 @@ public class DaoPartidos extends DaoBase{
                 match.getSeleccionVisitante().getNombre();
                 Arbitro ar = obtenerArbitro(rs.getInt("arbitro"));
                 match.setArbitro(ar);
-                System.out.println(ar.getNombre());
                 match.setFecha(rs.getString("fecha"));
                 match.setNumeroJornada(rs.getInt("numeroJornada"));
                 partidos.add(match);

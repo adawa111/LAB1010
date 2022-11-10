@@ -12,6 +12,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DaoSelecciones extends DaoBase{
+    public int existe(int id){
+        int existe = 0;
+        String sql1 = "select * from seleccion where idSeleccion ="+id;
+        try(Connection con = this.getConnection();
+            Statement stm = con.createStatement();
+            ResultSet rs1 = stm.executeQuery(sql1)) {
+            rs1.next();
+            if (rs1!=null){
+                existe = 1;
+            }else {
+                existe = 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return existe;
+    }
     public ArrayList<Seleccion> listarSelecciones() {
 
 

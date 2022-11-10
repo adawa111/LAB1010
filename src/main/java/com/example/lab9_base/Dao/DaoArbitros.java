@@ -4,7 +4,7 @@ import com.example.lab9_base.Bean.Arbitro;
 
 import java.util.ArrayList;
 
-public class DaoArbitros {
+public class DaoArbitros extends DaoBase{
     public ArrayList<Arbitro> listarArbitros() {
         ArrayList<Arbitro> arbitros = new ArrayList<>();
         /*

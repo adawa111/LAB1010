@@ -4,7 +4,7 @@ import com.example.lab9_base.Bean.Seleccion;
 
 import java.util.ArrayList;
 
-public class DaoSelecciones {
+public class DaoSelecciones extends DaoBase{
     public ArrayList<Seleccion> listarSelecciones() {
 
         ArrayList<Seleccion> selecciones = new ArrayList<>();

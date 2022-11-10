@@ -43,8 +43,8 @@
                     <div class="col-lg-3">
                         <select name="tipo" class="form-control">
                             <%--                    ACA DEBE COLOCAR LA LISTA DE OPCIONES MOSTRADAS EN EL SERVLET--%>
-                                <option value=""><%=opciones.get(0)%></option>
-                                <option value=""><%=opciones.get(1)%></option>
+                                <option value="nombre"><%=opciones.get(0)%></option>
+                                <option value="pais"><%=opciones.get(1)%></option>
                         </select>
                     </div>
                     <div class="col-lg-5">

@@ -56,18 +56,48 @@ public class DaoArbitros extends DaoBase {
     public ArrayList<Arbitro> busquedaPais(String pais) {
 
         ArrayList<Arbitro> arbitros = new ArrayList<>();
-        /*
-        Inserte su código aquí
-        */
+        String sql = "select * from arbitro where pais like ?";
+        try (Connection conn = this.getConnection();
+             PreparedStatement stm = conn.prepareStatement(sql);) {
+            stm.setString(1,"%"+pais+"%");
+            try (ResultSet rs = stm.executeQuery();){
+                while (rs.next()) {
+                    Arbitro arbi = new Arbitro();
+                    arbi.setIdArbitro(rs.getInt(1));
+                    arbi.setNombre(rs.getString(2));
+                    arbi.setPais(rs.getString(3));
+                    arbitros.add(arbi);
+                }
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         return arbitros;
     }
 
     public ArrayList<Arbitro> busquedaNombre(String nombre) {
 
         ArrayList<Arbitro> arbitros = new ArrayList<>();
-        /*
-        Inserte su código aquí
-        */
+        String sql = "select * from arbitro where nombre like ?";
+        try (Connection conn1 = this.getConnection();
+             PreparedStatement stm = conn1.prepareStatement(sql);) {
+            stm.setString(1,"%"+nombre+"%");
+            try (ResultSet rs = stm.executeQuery();){
+                while (rs.next()) {
+                    Arbitro arbi = new Arbitro();
+                    arbi.setIdArbitro(rs.getInt(1));
+                    arbi.setNombre(rs.getString(2));
+                    arbi.setPais(rs.getString(3));
+                    arbitros.add(arbi);
+                }
+            }
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
         return arbitros;
     }
 

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @WebServlet(name = "ArbitroServlet", urlPatterns = {"/ArbitroServlet"})
 public class ArbitroServlet extends HttpServlet {
@@ -31,6 +32,18 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
+                ArrayList<Arbitro> listaFiltrada = new ArrayList<>();
+                String buscar = request.getParameter("buscar");
+                String tipo = request.getParameter("tipo");
+                if (Objects.equals(tipo, "nombre")){
+                    listaFiltrada =arbitrosDao.busquedaNombre(buscar);
+                } else if (Objects.equals(tipo, "pais")) {
+                    listaFiltrada =arbitrosDao.busquedaPais(buscar);
+                }
+                request.setAttribute("listaArbitros",listaFiltrada);
+                request.setAttribute("opciones",opciones);
+                view = request.getRequestDispatcher("/arbitros/list.jsp");
+                view.forward(request, response);
                 break;
 
             case "guardar":

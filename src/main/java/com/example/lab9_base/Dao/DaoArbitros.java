@@ -106,7 +106,20 @@ public class DaoArbitros extends DaoBase {
         /*
         Inserte su código aquí
         */
-        return arbitro;
+        Arbitro refere = new Arbitro();
+        String sql1 = "Select * from arbitro where idArbitro ="+id;
+        try(Connection con1 = this.getConnection();
+            Statement stm1 = con1.createStatement();
+            ResultSet rs1 = stm1.executeQuery(sql1)) {
+            rs1.next();
+            refere.setIdArbitro(id);
+            refere.setNombre(rs1.getString("nombre"));
+            refere.setPais(rs1.getString("pais"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+        return refere;
     }
 
     public void borrarArbitro(int id) {

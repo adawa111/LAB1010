@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.lab9_base.Bean.Partido" %>
+<%@ page import="com.example.lab9_base.Bean.Estadio" %>
+<%@ page import="com.example.lab9_base.Bean.Arbitro" %>
 
 <%
     ArrayList<Partido> listapartido = (ArrayList<Partido>) request.getAttribute("listapartido");
@@ -49,14 +51,16 @@
                     <th>Árbitro</th>
                 </tr>
                 <% for(Partido match : listapartido) {%>
+                <% Estadio estadio = match.getSeleccionLocal().getEstadio();%>
+                <% Arbitro ar = match.getArbitro();%>
                 <tr>
                     <td><%= match.getNumeroJornada()%></td>
                     <td><%= match.getIdPartido()%></td>
                     <td><%= match.getFecha()%></td>
                     <td><%= match.getSeleccionLocal().getNombre()%></td>
                     <td><%= match.getSeleccionVisitante().getNombre()%></td>
-                    <td><%= match.getSeleccionLocal().getEstadio()%></td>
-                    <td><%= match.getArbitro()%></td>
+                    <td><%= estadio.getNombre()%></td>
+                    <td><%= ar.getNombre()%></td>
                 </tr>
                 <% }%>
             </table>

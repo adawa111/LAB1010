@@ -5,10 +5,7 @@ import com.example.lab9_base.Bean.Estadio;
 import com.example.lab9_base.Bean.Partido;
 import com.example.lab9_base.Bean.Seleccion;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DaoPartidos extends DaoBase{
@@ -97,8 +94,20 @@ public class DaoPartidos extends DaoBase{
 
     public void crearPartido(Partido partido) {
 
-        /*
-        Inserte su código aquí
-        */
+        String sql = "insert into partido (idPartido,seleccionLocal,seleccionVisitante,arbitro,fecha,numeroJornada) values (?,?,?,?,?,?)";
+        try (Connection connection = this.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            //falta latitud y longitud
+            pstmt.setInt(1, partido.getIdPartido());
+            pstmt.setInt(2,partido.getSeleccionLocal().getIdSeleccion());
+            pstmt.setInt(3,partido.getSeleccionVisitante().getIdSeleccion());
+            pstmt.setInt(4,partido.getArbitro().getIdArbitro());
+            pstmt.setString(5,partido.getFecha());;
+            pstmt.setInt(6,partido.getNumeroJornada());
+            pstmt.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }

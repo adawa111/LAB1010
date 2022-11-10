@@ -35,6 +35,7 @@
                             <label>Selección local</label>
                             <select name="local" class="form-control">
                                 <%--                       COLOCAR LISTA DE SELECCIONES DE LA BASE DE DATOS--%>
+
                                     <option selected></option>
                                     <%int i = 0;%>
                                     <% for(Seleccion sele : listaseleccion) {%>
@@ -47,6 +48,7 @@
                             <label>Selección Visitante</label>
                             <select name="visitante" class="form-control">
                                 <%--                        COLOCAR LISTA DE SELECCIONES DE LA BASE DE DATOS--%>
+
                                     <option selected></option>
                                     <%int j = 0;%>
                                     <% for(Seleccion sele1 : listaseleccion) {%>
@@ -59,6 +61,7 @@
                             <label>Árbitro</label>
                             <select name="arbitro" class="form-control">
                                 <%--                        COLOCAR LISTA DE ÁRBITRO DE LA BASE DE DATOS--%>
+
                                     <option selected></option>
                                     <%int k = 0;%>
                                     <% for(Arbitro arbitro : listaarbitro) {%>

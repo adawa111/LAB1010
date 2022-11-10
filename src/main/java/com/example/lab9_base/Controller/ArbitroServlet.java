@@ -38,11 +38,17 @@ public class ArbitroServlet extends HttpServlet {
                 Inserte su código aquí
                 */
                 arbitro = new Arbitro();
-                String codigo = request.getParameter("codigo");
+
                 String nombre = request.getParameter("nombre");
+                String pais = request.getParameter("pais");
+                arbitro.setNombre(nombre);
+                arbitro.setPais(pais);
 
                 arbitrosDao.crearArbitro(arbitro);
+                response.sendRedirect(request.getContextPath() + "/ArbitroServlet");
                 break;
+            default:
+                response.sendRedirect(request.getContextPath() + "/ArbitroServlet");
 
         }
     }
@@ -73,6 +79,7 @@ public class ArbitroServlet extends HttpServlet {
                 listaArbitros = arbitrosDao.listarArbitros();
 
                 request.setAttribute("listaArbitros",listaArbitros);
+                request.setAttribute("opciones",opciones);
                 view = request.getRequestDispatcher("/arbitros/list.jsp");
                 view.forward(request, response);
                 break;
@@ -80,7 +87,7 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
-
+                request.setAttribute("paises",paises);
                 view = request.getRequestDispatcher("/arbitros/form.jsp");
                 view.forward(request, response);
                 break;
@@ -89,6 +96,11 @@ public class ArbitroServlet extends HttpServlet {
                 /*
                 Inserte su código aquí
                 */
+
+                String id1 = request.getParameter("id");
+                int id = Integer.parseInt(id1);
+                arbitrosDao.borrarArbitro(id);
+                response.sendRedirect(request.getContextPath()+ "/ArbitroServlet");
                 break;
         }
     }

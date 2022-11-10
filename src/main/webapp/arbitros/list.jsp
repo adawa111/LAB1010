@@ -4,6 +4,9 @@
 <%
     ArrayList<Arbitro> listaArbitros = (ArrayList<Arbitro>) request.getAttribute("listaArbitros");
 %>
+<%
+    ArrayList<String> opciones = (ArrayList<String>) request.getAttribute("opciones");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,7 +27,8 @@
                     <div class="col-lg-3">
                         <select name="tipo" class="form-control">
                             <%--                    ACA DEBE COLOCAR LA LISTA DE OPCIONES MOSTRADAS EN EL SERVLET--%>
-
+                                <option value=""><%=opciones.get(0)%></option>
+                                <option value=""><%=opciones.get(1)%></option>
                         </select>
                     </div>
                     <div class="col-lg-5">

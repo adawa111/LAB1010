@@ -83,5 +83,16 @@ public class DaoArbitros extends DaoBase {
         /*
         Inserte su código aquí
         */
+        String sql = "DELETE FROM arbitro WHERE idArbitro = ?";
+
+        try (Connection connection = this.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

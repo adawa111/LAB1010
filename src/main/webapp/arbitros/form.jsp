@@ -27,7 +27,7 @@
                                 <option selected></option>
                                     <%int i = 0;%>
                                 <% for(String pais : paises) {%>
-                                <option value="<%=i%>"><%=pais%></option>
+                                <option value="<%=pais%>"><%=pais%></option>
                                     <%i =i+1;%>
                                 <% }%>
                             </select>

@@ -1,9 +1,6 @@
 package com.example.lab9_base.Dao;
 
-import com.example.lab9_base.Bean.Arbitro;
-import com.example.lab9_base.Bean.Partido;
 import com.example.lab9_base.Bean.Seleccion;
-import com.example.lab9_base.Dao.DaoPartidos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

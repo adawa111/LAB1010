@@ -1,15 +1,11 @@
 package com.example.lab9_base.Controller;
 
 import com.example.lab9_base.Bean.Arbitro;
-import com.example.lab9_base.Dao.DaoArbitros;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 

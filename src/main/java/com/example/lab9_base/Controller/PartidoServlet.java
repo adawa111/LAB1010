@@ -3,8 +3,6 @@ package com.example.lab9_base.Controller;
 import com.example.lab9_base.Bean.Arbitro;
 import com.example.lab9_base.Bean.Partido;
 import com.example.lab9_base.Bean.Seleccion;
-import com.example.lab9_base.Dao.DaoArbitros;
-import com.example.lab9_base.Dao.DaoPartidos;
 import com.example.lab9_base.Dao.DaoSelecciones;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

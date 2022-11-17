@@ -4,7 +4,6 @@ import com.example.lab9_base.Bean.Arbitro;
 import com.example.lab9_base.Bean.Partido;
 import com.example.lab9_base.Bean.Seleccion;
 import com.example.lab9_base.Dao.DaoArbitros;
-import com.example.lab9_base.Dao.DaoBase;
 import com.example.lab9_base.Dao.DaoPartidos;
 import com.example.lab9_base.Dao.DaoSelecciones;
 import jakarta.servlet.*;
@@ -12,6 +11,9 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "PartidoServlet", urlPatterns = {"/PartidoServlet", ""})
@@ -157,5 +159,21 @@ public class PartidoServlet extends HttpServlet {
 
         }
 
+    }
+
+    public static class DaoBase {
+
+        public Connection getConnection() throws SQLException {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch(ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            String user= "root";
+            String pass= "123456";
+            String url = "jdbc:mysql://localhost:3306/bi_corp_business?serverTimezone=America/Lima";
+
+            return DriverManager.getConnection(url,user,pass);
+        }
     }
 }
